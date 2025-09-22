@@ -1,44 +1,27 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
+    // Onde estão os arquivos fonte e para onde compilar
     "rootDir": "./src",
     "outDir": "./build",
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    // Ambiente de execução
+    "target": "ESNext", // gera código moderno (ES2022+)
+    "module": "NodeNext", // usa ESM (import/export) no Node
+    "moduleResolution": "NodeNext", // resolução de módulos compatível com Node
 
-    // Other Outputs
+    // Melhor interoperabilidade com libs em CommonJS (ex: express)
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Mapas de depuração e geração de tipos
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
 
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true
-  }
+    // Regras de segurança e checagem
+    "strict": true, // modo estrito de verificação
+    "skipLibCheck": true // ignora checagem de tipos em libs externas
+  },
+  "include": ["src"], // apenas transpilar arquivos da pasta src
+  "exclude": ["node_modules", "build"] // evita recompilar essas pastas
 }
